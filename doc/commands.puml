@@ -1,0 +1,25 @@
+@startuml
+
+class Operation {
+    Command[] commands
+    void execute()
+}
+
+class Command {
+  CommandState state
+  void execute()
+  void revert()
+  bool can_retry_execute
+  bool can_retry_revert
+  bool failed_on_revert_is_fatal
+}
+
+enum CommandState {
+    New
+    Done
+    Reverted
+    Error
+    ErrorOnRevert
+}
+
+@enduml

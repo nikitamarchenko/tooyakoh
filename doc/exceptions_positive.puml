@@ -1,0 +1,46 @@
+@startuml
+title Commands
+(*)  --> "create commands list"
+--> "get next command from list" as a_start
+-left->if "" then
+    -left->[list is empty] we done all commands
+    -->(*)
+else
+    -->"execute command"
+    ->if "" then
+        ->[command is success]add command to revert list
+        --> a_start
+    else
+        -->[failed]if "" then
+            -->[we can retry]"execute command"
+        else
+            -->[fatal failure]"start recovery" as recovery
+        endif
+    endif
+endif
+
+
+recovery-->"get command from revert list" as b_start
+-->if "" then
+    --> [list is empty] "mark operation as Failed"
+    -->(*)
+else
+    -->revert command
+    -right->if "" then
+        -->[success] b_start
+    else
+        -->[failed] if "" then
+            -->[can retry] revert command
+        else
+            if "" then
+                -->[we can skip this command from list] mark command as failed on revert
+                --> b_start
+            else
+                -->"mark revert as Failed"
+                -->"mark operation as Failed"
+            endif
+        endif
+    endif
+endif
+
+@enduml

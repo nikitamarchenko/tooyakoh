@@ -1,0 +1,28 @@
+@startuml
+title Commands (Revert scenario)
+
+
+(*)-->"get command from revert list" as b_start
+-->if "" then
+    --> [list is empty] "mark operation as Failed"
+    -->(*)
+else
+    -->revert command
+    if "" then
+        -->[success] b_start
+    else
+        -->[failed] if "" then
+            -->[can retry] revert command
+        else
+            if "" then
+                -->[we can skip this command from list] mark command as failed on revert
+                --> b_start
+            else
+                -->"mark revert as Failed"
+                -->"mark operation as Failed"
+            endif
+        endif
+    endif
+endif
+
+@enduml
