@@ -1,5 +1,7 @@
 @startuml
-title Commands
+
+title Logic
+
 (*)  --> "create commands list"
 --> "get next command from list" as a_start
 -left->if "" then

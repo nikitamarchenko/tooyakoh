@@ -1,20 +1,20 @@
 __author__ = 'nmarchenko'
 
-#import uuid
+import uuid
 from setuptools import setup, find_packages
-# from pip.req import parse_requirements
-#
-#
-# install_requires_pip = parse_requirements('requirements.txt',
-#                                           session=uuid.uuid1())
-#
+from pip.req import parse_requirements
+
+
+install_requires_pip = parse_requirements('requirements.txt',
+                                          session=uuid.uuid1())
+
 install_requires_setuptools = []
 dependency_links_setuptools = []
-#
-# for ir in install_requires_pip:
-#     if ir.url and ir.url.startswith('git'):
-#         dependency_links_setuptools.append(ir.url)
-#     install_requires_setuptools.append(str(ir.req))
+
+for ir in install_requires_pip:
+    if ir.url and ir.url.startswith('git'):
+        dependency_links_setuptools.append(ir.url)
+    install_requires_setuptools.append(str(ir.req))
 
 setup(
     name='tooyakoh',

@@ -1,5 +1,7 @@
 @startuml
 
+title Class diagram
+
 class Conveyor {
     Command[] commands
     void power_on()
