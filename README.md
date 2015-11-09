@@ -1,5 +1,5 @@
 ![Commands]
-(http://uml.mvnsearch.org/github/nikitamarchenko/tooyakoh/blob/master/doc/commands.puml)
+(https://raw.githubusercontent.com/nikitamarchenko/tooyakoh/master/doc/commands.png)
 
 ![Flow]
-(http://uml.mvnsearch.org/github/nikitamarchenko/tooyakoh/blob/master/doc/exceptions_positive.puml)
+(https://raw.githubusercontent.com/nikitamarchenko/tooyakoh/master/doc/exceptions_positive.puml)
