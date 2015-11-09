@@ -15,14 +15,10 @@ class ServerRPC(object):
         conveyor = common.Conveyor(commands)
         try:
             conveyor.power_on()
-            return conveyor._commands
         finally:
             print 'Server Commands'
             for i, c in enumerate(conveyor.commands):
                 print i, c, c.state
-
-    def rollback_conveyor(self):
-        pass
 
 
 def server():
@@ -41,14 +37,6 @@ class RpcCall(common.Command):
             c = zerorpc.Client()
             c.connect("tcp://127.0.0.1:4242")
             self.commands = c.start_new_conveyor()
-        except Exception as ex:
-            raise common.CommandError(ex)
-
-    def revert(self):
-        try:
-            c = zerorpc.Client()
-            c.connect("tcp://127.0.0.1:4242")
-            c.rollback_conveyor(self.commands)
         except Exception as ex:
             raise common.CommandError(ex)
 
