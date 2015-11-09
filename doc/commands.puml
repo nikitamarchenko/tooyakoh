@@ -1,8 +1,8 @@
 @startuml
 
-class Operation {
+class Conveyor {
     Command[] commands
-    void execute()
+    void power_on()
 }
 
 class Command {
@@ -21,5 +21,20 @@ enum CommandState {
     Error
     ErrorOnRevert
 }
+
+class ConveyorError {
+}
+
+class ConveyorFatalError{
+}
+
+class CommandError{
+    Exception inner_exception
+}
+
+Exception <|-- ConveyorError
+Exception <|-- ConveyorFatalError
+Exception <|-- CommandError
+
 
 @enduml
